@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>About planetWRF</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />	
+<link rel="icon" sizes="192x192" href="planetwrf192.png">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="apple-touch-icon-180x180-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-29827237-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+	<body class="landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" class="alt">
+					
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="modeling.html">Modeling</a></li>
+							<li><a href="publications.html">Publications</a></li>
+							<li><a href="download-planetwrf-v331.html">Get planetWRF</a></li>						
+							<li><a href="contact.html">Contact us</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner" class="logo">
+					<object type="image/svg+xml" data="images/planetwrf.svg" width="180" alt="planetWRF logo" title="planetWRF"><img src="images/planetwrf180.png" width="180" height="73" alt="planetWRF logo" title="planetWRF"></object>
+				</section>
+
+			<!-- Main -->
+				<section id="main" class="container">
+					<section class="box special">
+						<header class="major">
+							<h1>The PlanetWRF Model in Context</h1>
+						</header>	
+<p>PlanetWRF is a model for numerical simulation of planetary atmospheres and climate systems. It is different from most other planetary atmospheric models in a few ways: it has a generalized map-projection, allowing the model domain to be centered and shaped in lots of different ways, so as to be most applicable to the science question at hand; it has multiscale and nesting capabilities, meaning WRF domains can have extents from a few hundred meters to 10,000's of km, and it can embedded very high-resolution domains within progressively lower-resolution domains on larger scales. As such, WRF eliminates the distinction between global and mesoscale models. In this way, the model enables investigation of coupling between processes on a variety of scales, from global-to-local scales, which can be important for problems such as the onset and expansion of Martian dust storms. The generalized computational grid also allows the model to be configured at runtime in 1D, 2D, or 3D mode. Finally, in global mode, WRF can be configured with the numerical poles shifted away from the actual poles, allowing more accurate representation of polar atmospheric dynamics. PlanetWRF is an <a href="download-planetwrf-v331.html">open-source model</a> and also the basis of an open-source data assimilation system.</p>
+
+<h2>General Circulation Modeling for Planets</h2>
+
+<p>A global numerical model (known as a General Circulation Models - GCM) integrates the primitive equations of atmospheric motion and a range of other physical constraints and 'forcings' to yield a simulation of the global atmosphere and the global climate. GCMs have been applied to a variety of planetary atmospheres since the 1960s [Leovy and Mintz, 1969], not long after their introduction into terrestrial atmospheric science. Mars GCMs include the <a href="http://spacescience.arc.nasa.gov/mars-climate-modeling-group/"><acronym title="National Aeronautics and Space Administration">NASA</acronym> Ames General Circulation Model (GCM)</a>, the <a href="http://www.gfdl.noaa.gov/john-wilson-homepage">Geophysical Fluid Dynamics Laboratory (GFDL) Mars model</a> (based on the GFDL Skyhi model), the <a href="http://www-mars.lmd.jussieu.fr/mars.html">Oxford-LMD (Laboratoire du Meteorologie Dynamique) Mars model </a> (two dynamical cores with shared parameterizations of sub-grid scale physical processes), models based at York University in Canada, at Japanese universities, at the Japanese Meterological Agency, and at the Max Planck Institute for Solar System Research in Germany. Titan global atmosphere models include the <a href="http://www.lmd.jussieu.fr/titanDbase/index.html">LMD</a> and Cologne University models. Venus global atmosphere models include modified versions of the CCSR/NIES (Center for Climate System Research, University of Tokyo; National Institute for Environmental Studies, Japan) GCM and the United Kingdom Meteorological Office (UKMO) Unified Model (UM). In addition, the atmospheres of the giant planets have been the main focus of the only GCM custom-designed for planetary modeling, the <a href="http://pds-atmospheres.nmsu.edu/data_and_services/software/epic/epic.htm">Explicit Planetary Isentropic Coordinate (EPIC) model</a>, and the UM has also been applied to Jupiter.</p>
+
+<h2>Limited Area and Higher-Resolution Models</h2>
+<p>Limited area (or meso/micro-scale) models have only recently been used for planetary atmospheres. They have been almost exclusively applied to Mars in order to interpret landed spacecraft data and to examine meteorological systems on substantially sub-global scales [Rafkin et al., 2001; Toigo and Richardson, 2002; Tyler et al., 2002], though more recently they have also been applied to look at cloud formation on Titan. These models allow simulation of dynamics on scales down to a few meters (so-called Large Eddy Simulation or LES modeling) in order to explicitly simulate the boundary layer. However, the restricted nature of the computational grids of these models has limited them to non-global domain extents. As such, the boundary conditions of these limited area models must either be forced from an archive of global model results, or set to be periodic in idealized simulations.</p>
+
+<h2>Multi-Scale Models</h2>
+<p>Some models have begun to push at the distinction between global and mesoscale modeling. One approach is to 'zoom' a global model by distorting the map projection, causing clustering of grid points in a specified location. This type of zooming is useful, but restricted insofar as the placement, number, and extent of high-resolution patches within the domain are concerned, and a fully generalized computational grid is desirable. This can be accomplished in at least two ways: by switching to a grid of nearly equally-spaced polygonal grid boxes; or, by using the nesting machinery built into mesoscale models, and relaxing the map projection to allow for global (single or tiled domain) extent. The former solution is arguably more elegant - however, the latter would allow greater compatibility with previous models (a traditional GCM can be emulated), and greater flexibility in terms of grid configuration. We have chosen to follow the latter path with PlanetWRF, basing it on an existing model with nesting capabilities, the <a href="http://www.wrf-model.org/index.php">Weather Research and Forecasting (WRF)</a> model. See the <a href="modeling.html">modeling</a> page for details of the changes we needed to make.</p>
+					</section>
+			</section>
+			
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="copyright">
+						<li>&copy; 2016. All rights reserved.</li>
+					</ul>
+				</footer>
+		
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>planetWRF model modifications</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon" />	
+<link rel="icon" sizes="192x192" href="planetwrf192.png">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="apple-touch-icon-180x180-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-29827237-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+	<body class="landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header" class="alt">
+					
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="modeling.html">Modeling</a></li>
+							<li><a href="publications.html">Publications</a></li>
+							<li><a href="download-planetwrf-v331.html">Get planetWRF</a></li>						
+							<li><a href="contact.html">Contact us</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner" class="logo">
+					<object type="image/svg+xml" data="images/planetwrf.svg" width="180" alt="planetWRF logo" title="planetWRF"><img src="images/planetwrf180.png" width="180" height="73" alt="planetWRF logo" title="planetWRF"></object>
+				</section>
+
+			<!-- Main -->
+				<section id="main" class="container">
+					<section class="box special">
+						<header class="major">
+							<h1>Model Modifications - from WRF to planetWRF</h1>
+						</header>
+<p>WRF was designed to be a terrestrial mesoscale and microscale model. To make it work as a global model and as a planetary model a number of changes were required. These changes are briefly described here. Details of the original NCAR WRF model are provided on the <a href="http://www.wrf-model.org/index.php">NCAR WRF model website</a>.</p>
+
+<h1>Global changes required</h1>
+<h2>Non-Conformal Grid Modification</h2>
+<p>WRF was built to use only conformal map projections, meaning that the map scale factors (which relate map projection distance to physical distance) are independent of direction. This meant that for each point on the grid, only a single map scale factor was needed, simplifying the equations and allowing some cancellation of terms. However, only conformal map projections could be used: polar stereographic, Lambert conformal, Mercator, and simplified/idealized square grid boxes, eliminating the possibility of using the model as a fully global single domain (no conformal grid can reach to both poles).</p>
+<p>To generalize the model so that non-conformal map projections could be used, we needed to rewrite the equations with the full, separate x- and y-directional map scale factor components. The modifications allow any generalized map projection to be used, including 'rotated pole' (transverse projection) and stretched/zoomed grids, but our primary goal was to run using a simple cylindrical projection (evenly spaced in lat and lon).</p>
+
+<h2>Polar boundaries and filtering</h2>
+<p>A polar boundary condition is needed in the north-south direction. We have followed the convention for C-grid models used, for example, by the GSFC Aries model [Suarez and Takacs, 1993; Fox-Rabinovitz et al., 1997]. We take the polar point to be a C-grid v-stagger point (see below), with the value of the meridional velocity constantly equal to zero. Flux and gradient calculations across the pole are not allowed. This does not preclude advection of material across the pole: 'over the pole' advection is instead accomplished by zonal transport within the most poleward zone.</p>
+<p class="image fit"><img alt="polar point is C-grid v-stagger point" src="images/fig1.jpg"></p>
+<p>The convergence of the zonal grid points approaching the pole can present another well-known problem. The physical distancefor zonal advection of information decreases rapidly to zero at the pole, and determine the model time step needed to avoid instability in the horizontal direction (the Courant-Friedrichs-Lewy, or CFL, criteria). To be able to use longer timesteps (those suitable for more tropical latitudes) we have implemented polar Fourier filtering of the higher-frequency components of state variables. All grid points poleward of 60 degrees are filtered, with the cutoff frequency a function of the cosine of latitude. The column mass, horizontal winds, temperature and tracers (moisture, aerosols, chemicals, etc.) are filtered - this arrangement was found to yield the greatest stability.</p>
+
+<h1>Planetary changes required</h1>
+<h2>Generalized Planetary Parameters and Timing Conventions</h2>
+<p>Planet-specific parameters such as orbital parameters, the relationship between SI seconds and model seconds (see below), reference pressure, gravity and gas constant are set in one model constants module, with the selection of a set of consistent planetary parameters a compilation-time option. The co-location of all model constants in one module makes setting them up for any arbitrary planet very straightforward.</p>
+<p>The model assumes that one day is made up of 24 hours, each of which is composed of 60 minutes, in turn made up of 60 seconds. The model time step is externally defined in terms of these planetary time units, thus there is always an integer number of timesteps per day. However, the dynamics and physics routines are still integrated in MKS (SI) units, with the conversion from model-to-SI time made before calculating tendencies and physical quantities. The original WRF version uses the standard day-month-year calendar format. This convention is used to drive the solar radiation routines and to label model output. WRF uses routines from the standardized <a href="https://www.earthsystemcog.org/projects/esmf/">Earth System Modeling Framework (ESMF)</a>. We have converted versions of these routines to drive the model with user-specified orbital elements using the planetocentric solar longitude (Ls) date system (with Ls = 0 corresponding to northern hemisphere spring equinox and Ls = 90 to northern hemisphere summer solstice, etc.).</p>
+
+<h2>Parameterizations of sub-grid scale physical processes</h2>
+<p>A wide range of physics schemes are available in planetWRF, some of which are open source and included in the public code base. As the range of physics options continues to increase, the code base and associated README files should be examined to determine the options that are available.</p>
+					</section>
+			</section>
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="copyright">
+						<li>&copy; 2016. All rights reserved.</li>
+					</ul>
+				</footer>
+		
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollgress.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>
