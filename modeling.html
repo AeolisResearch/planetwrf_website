@@ -40,7 +40,6 @@
 							<li><a href="about.html">About</a></li>
 							<li><a href="modeling.html">Modeling</a></li>
 							<li><a href="publications.html">Publications</a></li>
-							<li><a href="download-planetwrf-v331.html">Get planetWRF</a></li>						
 							<li><a href="contact.html">Contact us</a></li>
 						</ul>
 					</nav>
@@ -75,7 +74,7 @@
 <p>The model assumes that one day is made up of 24 hours, each of which is composed of 60 minutes, in turn made up of 60 seconds. The model time step is externally defined in terms of these planetary time units, thus there is always an integer number of timesteps per day. However, the dynamics and physics routines are still integrated in MKS (SI) units, with the conversion from model-to-SI time made before calculating tendencies and physical quantities. The original WRF version uses the standard day-month-year calendar format. This convention is used to drive the solar radiation routines and to label model output. WRF uses routines from the standardized <a href="https://www.earthsystemcog.org/projects/esmf/">Earth System Modeling Framework (ESMF)</a>. We have converted versions of these routines to drive the model with user-specified orbital elements using the planetocentric solar longitude (Ls) date system (with Ls = 0 corresponding to northern hemisphere spring equinox and Ls = 90 to northern hemisphere summer solstice, etc.).</p>
 
 <h2>Parameterizations of sub-grid scale physical processes</h2>
-<p>A wide range of physics schemes are available in planetWRF, some of which are open source and included in the public code base. As the range of physics options continues to increase, the code base and associated README files should be examined to determine the options that are available.</p>
+<p>A wide range of physics schemes are included in planetWRF.</p>
 					</section>
 			</section>
 			<!-- Footer -->
