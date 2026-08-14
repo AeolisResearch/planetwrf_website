@@ -23,7 +23,7 @@ return classElements;
 
 function checkchecks()
   { 
-  var types = [ 'affiliation', 'abstract', 'title', 'author', 'journal', 'pubdate', 'origin', 'keywords', 'abscopy', 'doi', 'bibcode', 'position' ] ;
+  var types = [ 'affiliation', 'abstract', 'title', 'author', 'journal', 'pubdate', 'origin', 'keywords', 'abscopy', 'doi', 'bibcode' ] ;
   var i;
   var j;
   for (j=0; j<types.length; j++ )
@@ -39,7 +39,7 @@ function checkchecks()
   } 
   
   function checkall() {
-  var types = [ 'affiliation', 'abstract', 'title', 'author', 'journal', 'pubdate', 'origin', 'keywords', 'abscopy', 'doi', 'bibcode', 'position' ] ;
+  var types = [ 'affiliation', 'abstract', 'title', 'author', 'journal', 'pubdate', 'origin', 'keywords', 'abscopy', 'doi', 'bibcode' ] ;
 for (var j = 0; j < types.length; j++) 
 	{
 	var box = eval("document.options.c_"+types[j]); 
@@ -55,7 +55,7 @@ for (var j = 0; j < types.length; j++)
 }
 
 function uncheckall() {
-var types = [ 'affiliation', 'abstract', 'title', 'author', 'journal', 'pubdate', 'origin', 'keywords', 'abscopy', 'doi', 'bibcode', 'position' ] ;
+var types = [ 'affiliation', 'abstract', 'title', 'author', 'journal', 'pubdate', 'origin', 'keywords', 'abscopy', 'doi', 'bibcode' ] ;
 for (var j = 0; j < types.length; j++) 
 	{
 	var box = eval("document.options.c_"+types[j]); 

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 	<head>
 		<title>planetWRF model modifications</title>
 		<meta charset="utf-8" />
@@ -47,7 +47,7 @@
 
 			<!-- Banner -->
 				<section id="banner" class="logo">
-					<object type="image/svg+xml" data="images/planetwrf.svg" width="180" alt="planetWRF logo" title="planetWRF"><img src="images/planetwrf180.png" width="180" height="73" alt="planetWRF logo" title="planetWRF"></object>
+					<object type="image/svg+xml" data="images/planetwrf.svg" width="180" title="planetWRF"><img src="images/planetwrf180.png" width="180" height="73" alt="planetWRF logo" title="planetWRF"></object>
 				</section>
 
 			<!-- Main -->
@@ -56,7 +56,7 @@
 						<header class="major">
 							<h1>Model Modifications - from WRF to planetWRF</h1>
 						</header>
-<p>WRF was designed to be a terrestrial mesoscale and microscale model. To make it work as a global model and as a planetary model a number of changes were required. These changes are briefly described here. Details of the original NCAR WRF model are provided on the <a href="http://www.wrf-model.org/index.php">NCAR WRF model website</a>.</p>
+<p>WRF was designed to be a terrestrial mesoscale and microscale model. To make it work as a global model and as a planetary model a number of changes were required. These changes are briefly described here. Details of the original NCAR WRF model are provided on the <a href="https://www.mmm.ucar.edu/models/wrf">NCAR WRF model website</a>.</p>
 
 <h1>Global changes required</h1>
 <h2>Non-Conformal Grid Modification</h2>
@@ -71,7 +71,7 @@
 <h1>Planetary changes required</h1>
 <h2>Generalized Planetary Parameters and Timing Conventions</h2>
 <p>Planet-specific parameters such as orbital parameters, the relationship between SI seconds and model seconds (see below), reference pressure, gravity and gas constant are set in one model constants module, with the selection of a set of consistent planetary parameters a compilation-time option. The co-location of all model constants in one module makes setting them up for any arbitrary planet very straightforward.</p>
-<p>The model assumes that one day is made up of 24 hours, each of which is composed of 60 minutes, in turn made up of 60 seconds. The model time step is externally defined in terms of these planetary time units, thus there is always an integer number of timesteps per day. However, the dynamics and physics routines are still integrated in MKS (SI) units, with the conversion from model-to-SI time made before calculating tendencies and physical quantities. The original WRF version uses the standard day-month-year calendar format. This convention is used to drive the solar radiation routines and to label model output. WRF uses routines from the standardized <a href="https://www.earthsystemcog.org/projects/esmf/">Earth System Modeling Framework (ESMF)</a>. We have converted versions of these routines to drive the model with user-specified orbital elements using the planetocentric solar longitude (Ls) date system (with Ls = 0 corresponding to northern hemisphere spring equinox and Ls = 90 to northern hemisphere summer solstice, etc.).</p>
+<p>The model assumes that one day is made up of 24 hours, each of which is composed of 60 minutes, in turn made up of 60 seconds. The model time step is externally defined in terms of these planetary time units, thus there is always an integer number of timesteps per day. However, the dynamics and physics routines are still integrated in MKS (SI) units, with the conversion from model-to-SI time made before calculating tendencies and physical quantities. The original WRF version uses the standard day-month-year calendar format. This convention is used to drive the solar radiation routines and to label model output. WRF uses routines from the standardized <a href="https://earthsystemmodeling.org/">Earth System Modeling Framework (ESMF)</a>. We have converted versions of these routines to drive the model with user-specified orbital elements using the planetocentric solar longitude (Ls) date system (with Ls = 0 corresponding to northern hemisphere spring equinox and Ls = 90 to northern hemisphere summer solstice, etc.).</p>
 
 <h2>Parameterizations of sub-grid scale physical processes</h2>
 <p>A wide range of physics schemes are included in planetWRF.</p>
@@ -80,10 +80,11 @@
 			<!-- Footer -->
 				<footer id="footer">
 					<ul class="copyright">
-						<li>&copy; 2016-2022. All rights reserved.</li>
+						<li>&copy; 2016-2026. All rights reserved.</li>
 					</ul>
 				</footer>
-		
+		</div>
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
